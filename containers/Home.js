@@ -8,32 +8,25 @@ export default class Home extends React.Component {
     super(props);
 
     this.state = {
-      loading: false,
       data: [],
-      page: 1,
-      error: null,
-      refreshing: false
+      error: null
     };
   }
 
   componentDidMount() {
-    this.fetchFromAPI();
+    this.fetchFromAPI('https://www.reddit.com/r/pics/.json');
   }
 
-  fetchFromAPI = () => {
-    this.setState({loading: true});
-    fetch('https://www.reddit.com/r/hiphopheads/.json')
+  fetchFromAPI = (uri) => {
+    fetch(uri)
       .then(res => res.json())
-      .then(res => this.setState({ loading: false, data: res.data.children.map(x => x.data)}))
-      .catch(error => {
-        this.setState({ error, loading: false })
-      });
+      .then(res => this.setState({ data: res.data.children.map(x => x.data)}))
+      .catch(error => this.setState({ error }));
   }
 
-  renderListItem = ({title, id}) => (
+  renderListItem = (item) => (
     <ListItem 
-      title = {title}
-      id = {id}
+      item = {item}
     />
   );
 
@@ -55,7 +48,7 @@ export default class Home extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff'
+    backgroundColor: '#222',
   },
   list: {
     marginTop: 20,
