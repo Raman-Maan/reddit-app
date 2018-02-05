@@ -1,3 +1,3 @@
 reddit-app
 ---
-This is just a reddit app made to demonstrate the usefulness of React Native
+This is just a reddit app made to demonstrate the usefulness of React Native in a class presentation
