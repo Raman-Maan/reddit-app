@@ -12,12 +12,15 @@ export default class ListItem extends React.Component {
     };
   }
 
+  /**
+   * We're going to add the image to the post
+   */
   render = () => (
     <View style = {styles.container}>
-      <Image
+      {/* <Image
         style = {styles.img}
         source = {{uri: this.state.img}}
-      />
+      /> */}
       <Text style = {styles.title} numberOfLines = {3}>{this.state.title}</Text>
       <View style = {styles.details}>
         <Text style = {styles.detail_text}>{this.state.ups}</Text>
